@@ -2,8 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Test Gallery</title>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        <p th:text="'Hello, friend!'" />
+        <div id="photoUploadForm">
+            <form method="POST" enctype="multipart/form-data" action="/">
+                <table>
+                    <tr>
+                        <td>File to upload:</td>
+                        <td>
+                            <input type="file" name="file" />
+                        </td>
+                        <td>
+                            <input type="submit" value="Upload" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div>
+            <ul>
+                <li th:each="photo : ${photosForPage}">
+                    <a th:href="${photo.name}" th:text="${photo.name}" />
+                </li>
+            </ul>
+        </div>
     </body>
 </html>
